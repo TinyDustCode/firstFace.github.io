@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>个人网站</title>
 </head>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <style>
         p{
             font-size: 24px;
@@ -11,6 +12,16 @@
         }
     </style>
 <body>
-    <p>这也太真实了吧???养林猪</p>
+    <p></p>
+    <script>
+        axios.get('./database/data.json')
+            .then(data=>{
+                console.log(data.data);
+                document.getElementsByTagName('p')[0].innerText = `姓名：${data.data.name},年龄：${data.data.age},爱好：${data.data.love}`
+            })
+            .catch(err=>{
+                console.log(err);
+            })
+    </script>
 </body>
 </html>
